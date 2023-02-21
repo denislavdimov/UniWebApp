@@ -6,4 +6,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="InMemoryDb\" />
+    <None Remove="Interfaces\" />
+    <None Remove="Repositories\" />
+    <None Remove="Repositories\InMemoryRepo\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="InMemoryDb\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Repositories\InMemoryRepo\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookStore.Models\BookStore.Models.csproj" />
+  </ItemGroup>
 </Project>
