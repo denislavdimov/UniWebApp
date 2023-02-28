@@ -18,10 +18,22 @@ public class AuthorController : ControllerBase
         _authorService = authorService;
     }
 
-    [HttpGet(Name = "GetAllAuthors")]
+    [HttpGet("GetAll")]
     public IEnumerable<Author> GetAll()
     {
         return _authorService.GetAll();
+    }
+
+    [HttpPost("Add")]
+    public void Add([FromBody]Author author)
+    {
+        _authorService.Add(author);
+    }
+
+    [HttpGet("GetById")]
+    public Author GetById(int id)
+    {
+        return _authorService.GetById(id);
     }
 }
 
