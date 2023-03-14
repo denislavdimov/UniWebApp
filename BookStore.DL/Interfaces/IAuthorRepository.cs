@@ -1,5 +1,6 @@
 ﻿using System;
 using BookStore.Models.Models;
+using BookStore.Models.Requests;
 
 namespace BookStore.DL.Interfaces
 {
@@ -11,6 +12,9 @@ namespace BookStore.DL.Interfaces
 
 		void Add(Author author);
 
+		void Delete(int id);
+
+		void Update(Author author);
 	}
 }
 
