@@ -14,7 +14,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="InMemoryDb\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Repositories\" />
     <Folder Include="Repositories\InMemoryRepo\" />
   </ItemGroup>

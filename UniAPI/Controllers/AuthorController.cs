@@ -1,5 +1,6 @@
 ﻿using BookStore.BL.Interfaces;
 using BookStore.Models.Models;
+using BookStore.Models.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UniAPI.Controllers;
@@ -25,15 +26,27 @@ public class AuthorController : ControllerBase
     }
 
     [HttpPost("Add")]
-    public void Add([FromBody]Author author)
+    public void Add([FromBody] AddAuthorRequest authorRequest)
     {
-        _authorService.Add(author);
+        _authorService.Add(authorRequest);
     }
 
     [HttpGet("GetById")]
     public Author GetById(int id)
     {
         return _authorService.GetById(id);
+    }
+
+    [HttpPut("Update")]
+    public void Update([FromBody] UpdateAuthorRequest author)
+    {
+        _authorService.Update(author);
+    }
+
+    [HttpDelete("Delete")]
+    public void Delete(int id)
+    {
+        _authorService.Delete(id);
     }
 }
 
