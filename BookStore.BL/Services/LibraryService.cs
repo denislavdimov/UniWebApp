@@ -1,6 +1,7 @@
 ﻿using BookStore.BL.Interfaces;
 using BookStore.DL.Interfaces;
 using BookStore.Models.Responses;
+using Microsoft.Extensions.Logging;
 
 namespace BookStore.BL.Services
 {
@@ -8,30 +9,33 @@ namespace BookStore.BL.Services
     {
         private readonly IAuthorRepository _authorRepository;
         private readonly IBookRepository _bookRepository;
+        //private readonly ILogger _logger;
 
         public LibraryService(IAuthorRepository authorRepository, 
             IBookRepository bookRepository)
         {
             _authorRepository = authorRepository;
             _bookRepository = bookRepository;
+            //_logger = logger;   
         }
 
-        public GetAllBooksByAuthorRepsonse GetAllBooksByAuthorAndReleaseDate(int id, int releaseDate)
+        public async Task<GetAllBooksByAuthorRepsonse> GetAllBooksByAuthorAndReleaseDate(int id, int releaseDate)
         {
             //GetAllBooksByAuthorId(id);
             return new GetAllBooksByAuthorRepsonse()
             {
-                Author = _authorRepository.GetById(id),
-                Books = _bookRepository.GetAllByAuthorIdAndReleaseDate(id, releaseDate)
+                Author = await _authorRepository.GetById(id),
+                Books = await _bookRepository.GetAllByAuthorIdAndReleaseDate(id, releaseDate)
             };
         }
 
-        public GetAllBooksByAuthorRepsonse GetAllBooksByAuthorId(int id)
+        public async Task<GetAllBooksByAuthorRepsonse> GetAllBooksByAuthorId(int id)
         {
+            //_logger.LogInformation("Logera bachka");
             return new GetAllBooksByAuthorRepsonse()
             {
-                Author = _authorRepository.GetById(id),
-                Books = _bookRepository.GetAllByAuthorId(id)
+                Author = await _authorRepository.GetById(id),
+                Books = await _bookRepository.GetAllByAuthorId(id)
             };
         }
 

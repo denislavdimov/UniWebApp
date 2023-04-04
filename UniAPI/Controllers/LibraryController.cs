@@ -1,6 +1,4 @@
 ﻿using BookStore.BL.Interfaces;
-using BookStore.BL.Services;
-using BookStore.Models.Models;
 using BookStore.Models.Responses;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,15 +16,15 @@ public class LibraryController : ControllerBase
     }
 
     [HttpGet("GetAllBooksByAuthor")]
-    public GetAllBooksByAuthorRepsonse GetAllBooksByAuthor(int authorId)
+    public async Task<GetAllBooksByAuthorRepsonse> GetAllBooksByAuthor(int authorId)
     {
-        return _libraryService.GetAllBooksByAuthorId(authorId);
+        return await _libraryService.GetAllBooksByAuthorId(authorId);
     }
 
     [HttpGet("GetAllBooksByAuthorAndReleaseDate")]
-    public GetAllBooksByAuthorRepsonse GetAllBooksByAuthorAndReleaseDate(int authorId, int releaseDate)
+    public async Task<GetAllBooksByAuthorRepsonse> GetAllBooksByAuthorAndReleaseDate(int authorId, int releaseDate)
     {
-        return _libraryService.GetAllBooksByAuthorAndReleaseDate(authorId, releaseDate);
+        return await _libraryService.GetAllBooksByAuthorAndReleaseDate(authorId, releaseDate);
     }
 }
 

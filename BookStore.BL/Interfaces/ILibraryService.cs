@@ -4,7 +4,7 @@ namespace BookStore.BL.Interfaces
 {
     public interface ILibraryService
     {
-        GetAllBooksByAuthorRepsonse GetAllBooksByAuthorId(int id);
-        GetAllBooksByAuthorRepsonse GetAllBooksByAuthorAndReleaseDate(int id, int releaseDate);
+        Task<GetAllBooksByAuthorRepsonse> GetAllBooksByAuthorId(int id);
+        Task<GetAllBooksByAuthorRepsonse> GetAllBooksByAuthorAndReleaseDate(int id, int releaseDate);
     }
 }
