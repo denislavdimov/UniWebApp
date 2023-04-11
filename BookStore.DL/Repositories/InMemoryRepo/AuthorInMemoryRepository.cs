@@ -4,7 +4,7 @@ using BookStore.Models.Requests;
 
 namespace BookStore.DL.Repositories.InMemoryRepo
 {
-    public class AuthorInMemoryRepository : IAuthorRepository
+    public class AuthorInMemoryRepository 
     {
         public void Add(Author author)
         {
