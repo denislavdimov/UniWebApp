@@ -9,6 +9,8 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 
 //var logger = new LoggerConfiguration()
 //    .WriteTo
@@ -36,6 +38,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddFluentValidationAutoValidation()
+    .AddFluentValidationClientsideAdapters();
+builder.Services
+    .AddValidatorsFromAssemblyContaining(typeof(Program));
 
 BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
 
