@@ -18,7 +18,7 @@ namespace BookStore.DL.Repositories.MongoDB
             var database =
                 client.GetDatabase(mongoConfig.CurrentValue.DatabaseName);
             _authors =
-                database.GetCollection<Author>(nameof(Author));
+                database.GetCollection<Author>($"{nameof(Author)} - DD");
         }
 
         public async Task Add(Author author)

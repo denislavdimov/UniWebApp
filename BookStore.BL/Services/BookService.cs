@@ -1,21 +1,26 @@
-﻿using BookStore.BL.Interfaces;
+﻿using AutoMapper;
+using BookStore.BL.Interfaces;
 using BookStore.DL.Interfaces;
 using BookStore.Models.Models;
+using BookStore.Models.Requests.BookRequests;
 
 namespace BookStore.BL.Services
 {
     public class BookService : IBookService
     {
         private readonly IBookRepository _bookRepository;
+        private readonly IMapper _mapper;
 
-        public BookService(IBookRepository bookRepository)
+        public BookService(IBookRepository bookRepository, IMapper mapper)
         {
             _bookRepository = bookRepository;
+            _mapper = mapper;   
         }
 
-        public async Task Add(Book book)
+        public async Task Add(AddBookRequest book)
         {
-            await _bookRepository.Add(book);
+            var bookToAdd = _mapper.Map<Book>(book);
+            await _bookRepository.Add(bookToAdd);
         }
 
         public async Task Delete(int id)

@@ -1,4 +1,5 @@
 ﻿using BookStore.Models.Models;
+using BookStore.Models.Requests.BookRequests;
 
 namespace BookStore.BL.Interfaces
 {
@@ -8,7 +9,7 @@ namespace BookStore.BL.Interfaces
 
         Task<Book> GetById(int id);
 
-        Task Add(Book book);
+        Task Add(AddBookRequest book);
 
         Task Delete(int id);
 

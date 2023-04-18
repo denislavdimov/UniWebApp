@@ -1,5 +1,6 @@
 using BookStore.BL.Interfaces;
 using BookStore.Models.Models;
+using BookStore.Models.Requests.BookRequests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UniAPI.Controllers;
@@ -18,34 +19,51 @@ public class BookController : ControllerBase
         _bookService = bookservice;
     }
 
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Book>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     [HttpGet("GetAll")]
-    public async Task<IEnumerable<Book>> GetAll()
+    public async Task<IActionResult> GetAll()
     {
-        return await _bookService.GetAll();
+        var result = await _bookService.GetAll();
+
+        if (result != null && result.Count() < 0) return Ok(result);
+
+        return NotFound();
     }
 
+    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(IEnumerable<Book>))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [HttpPost("Add")]
-    public async Task Add([FromBody] Book book)
+    public async Task Add([FromBody] AddBookRequest book)
     {
         await _bookService.Add(book);
     }
 
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Book))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [HttpGet("GetById")]
-    public async Task<Book> GetById(int id)
+    public async Task<IActionResult> GetById(int id)
     {
-        return await _bookService.GetById(id);
+        if (id <= 0) return BadRequest();
+
+        var result = await _bookService.GetById(id);
+
+        if (result != null) return Ok(result);
+
+        return NotFound();
     }
 
     [HttpPut("Update")]
-    public void Update([FromBody] Book book)
+    public async Task Update([FromBody] Book book)
     {
-        _bookService.Update(book);
+        await _bookService.Update(book);
     }
 
     [HttpDelete("Delete")]
-    public void Delete(int id)
+    public async Task Delete(int id)
     {
-        _bookService.Delete(id);
+        await _bookService.Delete(id);
     }
 }
 
