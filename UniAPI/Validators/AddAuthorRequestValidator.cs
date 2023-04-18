@@ -10,7 +10,7 @@ public class AddAuthorRequestValidator : AbstractValidator<AddAuthorRequest>
         RuleFor(n => n.Name)
             .NotNull()
             .NotEmpty()
-            .MinimumLength(20);
+            .MaximumLength(20);
 
         RuleFor(x => x.Bio)
             .NotNull()
