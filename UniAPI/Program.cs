@@ -11,6 +11,8 @@ using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
 using FluentValidation.AspNetCore;
 using FluentValidation;
+using UniAPI.Extensions;
+using UniAPI.HealthChecks;
 
 //var logger = new LoggerConfiguration()
 //    .WriteTo
@@ -44,6 +46,8 @@ builder.Services.AddFluentValidationAutoValidation()
 builder.Services
     .AddValidatorsFromAssemblyContaining(typeof(Program));
 
+builder.Services.AddHealthChecks().AddCheck<CustomCheck>("CustomCheck");
+
 BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
 
 var app = builder.Build();
@@ -54,6 +58,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.RegisterHealthCheck();
 
 app.UseHttpsRedirection();
 
