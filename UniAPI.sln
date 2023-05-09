@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 25.0.1704.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniAPI", "UniAPI\UniAPI.csproj", "{6C330951-2739-4F89-8095-2E9B4415E475}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniAPI", "UniAPI\UniAPI.csproj", "{6C330951-2739-4F89-8095-2E9B4415E475}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.BL", "BookStore.BL\BookStore.BL.csproj", "{66388875-50DC-4647-A0E8-80DE24AD2649}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.BL", "BookStore.BL\BookStore.BL.csproj", "{66388875-50DC-4647-A0E8-80DE24AD2649}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.DL", "BookStore.DL\BookStore.DL.csproj", "{08F37354-6817-4838-B422-49B70ABCA9DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.DL", "BookStore.DL\BookStore.DL.csproj", "{08F37354-6817-4838-B422-49B70ABCA9DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Models", "BookStore.Models\BookStore.Models.csproj", "{A24EBF14-D7CD-4843-93FC-8343FE4E709A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Models", "BookStore.Models\BookStore.Models.csproj", "{A24EBF14-D7CD-4843-93FC-8343FE4E709A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Test", "BookStore.Test\BookStore.Test.csproj", "{E5F73CD9-FAB7-4A0F-A4C0-1870B976F95D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A24EBF14-D7CD-4843-93FC-8343FE4E709A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A24EBF14-D7CD-4843-93FC-8343FE4E709A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A24EBF14-D7CD-4843-93FC-8343FE4E709A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5F73CD9-FAB7-4A0F-A4C0-1870B976F95D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5F73CD9-FAB7-4A0F-A4C0-1870B976F95D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5F73CD9-FAB7-4A0F-A4C0-1870B976F95D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5F73CD9-FAB7-4A0F-A4C0-1870B976F95D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
