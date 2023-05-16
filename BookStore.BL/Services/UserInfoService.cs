@@ -13,6 +13,11 @@ namespace BookStore.BL.Services
             _userInfoRepository = userInfoRepository;   
         }
 
+        public async Task Add(UserInfo user)
+        {
+            await _userInfoRepository.Add(user);
+        }
+
         public async Task<UserInfo?> GetUserInfo(string username, string password)
         {
             return await _userInfoRepository.GetUserInfo(username, password);

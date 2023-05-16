@@ -4,6 +4,7 @@ namespace BookStore.BL.Interfaces
 {
     public interface IUserInfoService
     {
-        Task<UserInfo?> GetUserInfo(string username, string password);
+        public Task<UserInfo?> GetUserInfo(string username, string password);
+        public Task Add(UserInfo user);
     }
 }

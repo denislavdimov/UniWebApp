@@ -4,6 +4,7 @@ namespace BookStore.DL.Interfaces
 {
     public interface IUserInfoRepository
     {
-        Task<UserInfo?> GetUserInfo(string username, string password);
+        public Task<UserInfo?> GetUserInfo(string username, string password);
+        public Task Add(UserInfo user);
     }
 }

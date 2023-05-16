@@ -8,7 +8,7 @@ namespace BookStore.DL.Repositories.MongoDB
 {
     public class UserInfoMongoRepository : IUserInfoRepository
     {
-        private readonly IMongoCollection<UserInfo> _usersInfo;
+        private readonly IMongoCollection<UserInfo> _users;
 
         public UserInfoMongoRepository(IOptionsMonitor<MongoDbConfiguration> mongoConfig)
         {
@@ -16,13 +16,18 @@ namespace BookStore.DL.Repositories.MongoDB
                 new MongoClient(mongoConfig.CurrentValue.ConnectionString);
             var database =
                 client.GetDatabase(mongoConfig.CurrentValue.DatabaseName);
-            _usersInfo =
+            _users =
                 database.GetCollection<UserInfo>(nameof(UserInfo));
+        }
+
+        public async Task Add(UserInfo user)
+        {
+            await _users.InsertOneAsync(user);
         }
 
         public async Task<UserInfo?> GetUserInfo(string username, string password)
         {
-            return await _usersInfo.Find(u => u.Username == username && u.Password == password).FirstOrDefaultAsync();
+            return await _users.Find(u => u.Username == username && u.Password == password).FirstOrDefaultAsync();
         }
     }
 }

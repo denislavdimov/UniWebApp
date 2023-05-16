@@ -1,6 +1,7 @@
 using BookStore.BL.Interfaces;
 using BookStore.Models.Models;
 using BookStore.Models.Requests.BookRequests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UniAPI.Controllers;
@@ -21,6 +22,7 @@ public class BookController : ControllerBase
 
     //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Book>))]
     //[ProducesResponseType(StatusCodes.Status404NotFound)]
+    [Authorize]
     [HttpGet("GetAll")]
     public async Task<IEnumerable<Book>> GetAll()
     {
